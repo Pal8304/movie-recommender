@@ -13,6 +13,8 @@ import {
   Button,
 } from "@mui/material";
 
+import { useNavigate } from "react-router-dom";
+
 import Draggable from "react-draggable";
 
 export default function MovieList() {
@@ -25,6 +27,7 @@ export default function MovieList() {
   const handleClose = () => {
     setOpen(false);
   };
+  const navigate = useNavigate();
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
       {movieList.map(
@@ -118,13 +121,20 @@ export default function MovieList() {
                   <DialogActions
                     style={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
                   >
-                    <Button onClick={handleClose} style={{ color: "white" }}>
+                    <Button
+                      autoFocus
+                      onClick={() => {
+                        // console.log("/edit" + (selectedmovie.id.toString()));
+                        navigate(("/edit/" + selectedmovie.id))
+                      }}
+                      style={{ color: "white"}}
+                    >
                       Edit
                     </Button>
                     <Button
                       autoFocus
                       onClick={handleClose}
-                      style={{ color: "white" }}
+                      style={{ color: "white", font:"mono", fontFamily:"monospace", fontSize:"1.125 rem" }}
                     >
                       Cancel
                     </Button>
