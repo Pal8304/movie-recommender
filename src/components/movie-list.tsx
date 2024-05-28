@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+import { useNavigate } from "react-router-dom";
 import { movieList } from "../assets/movie-data";
 
 import { Card, CardContent, CardMedia } from "@mui/material";
@@ -13,9 +13,19 @@ import {
   Button,
 } from "@mui/material";
 
-import { useNavigate } from "react-router-dom";
+// import Paper, { PaperProps } from "@mui/material/Paper";
+// import Draggable from "react-draggable";
 
-import Draggable from "react-draggable";
+// function PaperComponent(props: PaperProps) {
+//   return (
+//     <Draggable
+//       handle="#draggable-dialog-title"
+//       cancel={'[class*="MuiDialogContent-root"]'}
+//     >
+//       <Paper {...props} />
+//     </Draggable>
+//   );
+// }
 
 export default function MovieList() {
   const [open, setOpen] = useState(false);
@@ -59,7 +69,10 @@ export default function MovieList() {
                 <Dialog
                   open={open}
                   onClose={handleClose}
+                  //disableEnforceFocus // Allows other things to take focus
+                  //   hideBackdrop // Hides the shaded backdrop
                   aria-labelledby="draggable-dialog-title"
+                  //PaperComponent={PaperComponent}
                   style={{
                     color: "white",
                     alignItems: "center",
@@ -95,8 +108,11 @@ export default function MovieList() {
                       </div>
                       <DialogContentText
                         style={{
+                          width: "100%",
+                          height: "100%",
                           backgroundColor: "rgb(30 41 59)",
                           color: "white",
+                          overflow: "scroll",
                         }}
                       >
                         <div className="flex flex-col items-start justify-center gap-1">
@@ -112,9 +128,7 @@ export default function MovieList() {
                             Rate
                           </Button> */}
                         </div>
-                        <div>
-                            Similar Movies: 
-                        </div>
+                        <div>Similar Movies:</div>
                       </DialogContentText>
                     </div>
                   </DialogContent>
@@ -125,16 +139,21 @@ export default function MovieList() {
                       autoFocus
                       onClick={() => {
                         // console.log("/edit" + (selectedmovie.id.toString()));
-                        navigate(("/edit/" + selectedmovie.id))
+                        navigate("/edit/" + selectedmovie.id);
                       }}
-                      style={{ color: "white"}}
+                      style={{ color: "white" }}
                     >
                       Edit
                     </Button>
                     <Button
                       autoFocus
                       onClick={handleClose}
-                      style={{ color: "white", font:"mono", fontFamily:"monospace", fontSize:"1.125 rem" }}
+                      style={{
+                        color: "white",
+                        font: "mono",
+                        fontFamily: "monospace",
+                        fontSize: "1.125 rem",
+                      }}
                     >
                       Cancel
                     </Button>
