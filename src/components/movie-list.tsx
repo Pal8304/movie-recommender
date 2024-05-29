@@ -45,7 +45,7 @@ export default function MovieList() {
           index < 10 && (
             <>
               <div
-                className="flex w-56 h-[32rem] m-2 rounded-lg transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110 hover:border-2"
+                className="flex w-56 h-[32rem] m-2 rounded-lg transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110 hover:border-2 hover:cursor-pointer"
                 onClick={handleClickOpen(movie)}
               >
                 <Card className="w-full h-full">
@@ -56,9 +56,9 @@ export default function MovieList() {
                   ></CardMedia>
                   <CardContent>
                     <div className="flex flex-col overflow-scroll">
-                      <div className="text-2xl">{movie.title}</div>
+                      <div className="text-2xl line-clamp-1">{movie.title}</div>
                       {/* <div className="text-sm opacity-50">({movie.release_date})</div> */}
-                      <div className="text-sm opacity-50 overflow-scroll">
+                      <div className="text-sm opacity-50 overflow-scroll line-clamp-3">
                         {movie.overview}
                       </div>
                     </div>

@@ -1,19 +1,33 @@
 import NoTFound from "./NotFound";
 import { movieList } from "./assets/movie-data";
 
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
+import { useState } from "react";
 import Button from "@mui/material/Button";
 
-import { useNavigate } from "react-router-dom";
-
 export default function Edit() {
+  const [movieName, setMovieName] = useState("");
+  const [movieDescription, setMovieDescription] = useState("");
+  const [movieRelease, setMovieRelease] = useState("");
+  const [movieLanguage, setMovieLanguage] = useState("");
   const navigate = useNavigate();
   const movieId = useParams().id;
   const movie = movieList.filter((movies) => movies.id.toString() === movieId);
   if (movie === null || movie === undefined || movie.length != 1) {
     return <NoTFound />;
   }
- const movieDetails = movie[0];
+  function handleSaveChanges(movieId: number) {
+    const movieIndex = movieList.findIndex((movie) => movie.id === movieId);
+    if (movieIndex === -1) {
+      return;
+    }
+    if(movieName !== "")movieList[movieIndex].title = movieName;
+    if(movieDescription !== "")movieList[movieIndex].overview = movieDescription;
+    if(movieRelease !== "") movieList[movieIndex].release_date = movieRelease;
+    if(movieLanguage !== "") movieList[movieIndex].original_language = movieLanguage;
+    navigate("/");
+  }
+  const movieDetails = movie[0];
   return (
     <div className="w-screen h-screen flex justify-center items-center bg-slate-800 text-white gap-2">
       <div className="flex justify-between w-2/3 h-2/3 border-2 rounded-xl">
@@ -25,47 +39,62 @@ export default function Edit() {
             <div className="text-lg mr-4">Name:</div>
             <input
               type="text"
+              id="movie-name"
               placeholder={movieDetails.title}
               className="w-full bg-inherit border-1 rounded-md"
+              value={movieName}
+              onChange={(e) => setMovieName(e.target.value)}
             ></input>
           </div>
           <div className="flex flex-row justify-between">
             <div className="text-lg mr-4">Description:</div>
             <input
               type="text"
+              id="movie-description"
               placeholder={movieDetails.overview}
               className="w-full bg-inherit border-1 rounded-md"
+              value={movieDescription}
+              onChange={(e) => setMovieDescription(e.target.value)}
             ></input>
           </div>
           <div className="flex flex-row justify-between">
             <div className="text-lg mr-4">Release:</div>
             <input
               type="text"
+              id="movie-release"
               placeholder={movieDetails.release_date}
               className="w-full bg-inherit border-1 rounded-md"
+              value={movieRelease}
+              onChange={(e)=>setMovieRelease(e.target.value)}
             ></input>
           </div>
           <div className="flex flex-row justify-between">
             <div className="text-lg mr-4">Language</div>
             <input
               type="text"
+              id="movie-language"
               placeholder={movieDetails.original_language}
               className="w-full bg-inherit border-1 rounded-md"
+              value={movieLanguage}
+              onChange={(e)=>setMovieLanguage(e.target.value)}
             ></input>
           </div>
           <div className="flex justify-center items-center gap-4 text-white">
-            <Button variant="outlined" style={{ color: "white" }}
-            onClick={ () => {
-                alert("Saving Changes is left to be implemented.")
-            }}
+            <Button
+              variant="outlined"
+              style={{ color: "white" }}
+              onClick={() => {
+                handleSaveChanges(movieDetails.id);
+              }}
             >
-              {" "}
-              SAVE CHANGES{" "}
+              Save Changes
             </Button>
-            <Button variant="outlined" style={{ color: "white" }}
-            onClick={() => {
-                navigate("/")
-            }}
+            <Button
+              variant="outlined"
+              style={{ color: "white" }}
+              onClick={() => {
+                navigate("/");
+              }}
             >
               {" "}
               Cancel{" "}
