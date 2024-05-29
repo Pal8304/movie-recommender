@@ -9,12 +9,19 @@ import {
 
 import { useNavigate } from "react-router-dom";
 
+import Movie from "../assets/movie-interface";
+interface MovieDescriptionDialogProps {
+  selectedmovie: Movie;
+  open: boolean;
+  handleClose: () => void;
+}
+
 export default function MovieDescriptionDialog({
   selectedmovie,
   open,
   handleClose,
-}) {
-    const navigate = useNavigate();
+}: MovieDescriptionDialogProps) {
+  const navigate = useNavigate();
   return (
     <div className="text-white flex items-center justify-center">
       <Dialog
@@ -24,14 +31,14 @@ export default function MovieDescriptionDialog({
         //   hideBackdrop // Hides the shaded backdrop
         aria-labelledby="draggable-dialog-title"
         //PaperComponent={PaperComponent}
-        style={{
+        sx={{
           color: "white",
           alignItems: "center",
           justifyContent: "center",
         }}
       >
         <DialogTitle
-          style={{
+          sx={{
             cursor: "pointer",
             backgroundColor: "rgb(30 41 59)",
             color: "white",
@@ -43,7 +50,7 @@ export default function MovieDescriptionDialog({
           <div className="text-3xl">{selectedmovie.title}</div>
         </DialogTitle>
         <DialogContent
-          style={{
+          sx={{
             backgroundColor: "rgb(30 41 59)",
             color: "white",
             display: "flex",
@@ -55,7 +62,7 @@ export default function MovieDescriptionDialog({
               <img src={selectedmovie.poster_path} className="w-full h-full" />
             </div>
             <DialogContentText
-              style={{
+              sx={{
                 width: "100%",
                 height: "100%",
                 backgroundColor: "rgb(30 41 59)",
@@ -81,7 +88,7 @@ export default function MovieDescriptionDialog({
           </div>
         </DialogContent>
         <DialogActions
-          style={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
+          sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
         >
           <Button
             autoFocus
@@ -89,17 +96,17 @@ export default function MovieDescriptionDialog({
               // console.log("/edit" + (selectedmovie.id.toString()));
               navigate("/edit/" + selectedmovie.id);
             }}
-            style={{ color: "white" }}
+            sx={{ color: "white" }}
           >
             Edit
           </Button>
           <Button
             autoFocus
             onClick={handleClose}
-            style={{
+            sx={{
               color: "white",
-              font: "mono",
-              fontFamily: "monospace",
+              //   font: "mono",
+              //   fontFamily: "monospace",
               fontSize: "1.125 rem",
             }}
           >

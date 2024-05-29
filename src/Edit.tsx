@@ -21,10 +21,12 @@ export default function Edit() {
     if (movieIndex === -1) {
       return;
     }
-    if(movieName !== "")movieList[movieIndex].title = movieName;
-    if(movieDescription !== "")movieList[movieIndex].overview = movieDescription;
-    if(movieRelease !== "") movieList[movieIndex].release_date = movieRelease;
-    if(movieLanguage !== "") movieList[movieIndex].original_language = movieLanguage;
+    if (movieName !== "") movieList[movieIndex].title = movieName;
+    if (movieDescription !== "")
+      movieList[movieIndex].overview = movieDescription;
+    if (movieRelease !== "") movieList[movieIndex].release_date = movieRelease;
+    if (movieLanguage !== "")
+      movieList[movieIndex].original_language = movieLanguage;
     navigate("/");
   }
   const movieDetails = movie[0];
@@ -65,7 +67,7 @@ export default function Edit() {
               placeholder={movieDetails.release_date}
               className="w-full bg-inherit border-1 rounded-md"
               value={movieRelease}
-              onChange={(e)=>setMovieRelease(e.target.value)}
+              onChange={(e) => setMovieRelease(e.target.value)}
             ></input>
           </div>
           <div className="flex flex-row justify-between">
@@ -76,13 +78,13 @@ export default function Edit() {
               placeholder={movieDetails.original_language}
               className="w-full bg-inherit border-1 rounded-md"
               value={movieLanguage}
-              onChange={(e)=>setMovieLanguage(e.target.value)}
+              onChange={(e) => setMovieLanguage(e.target.value)}
             ></input>
           </div>
           <div className="flex justify-center items-center gap-4 text-white">
             <Button
               variant="outlined"
-              style={{ color: "white" }}
+              sx={{ color: "white" }}
               onClick={() => {
                 handleSaveChanges(movieDetails.id);
               }}
@@ -91,7 +93,7 @@ export default function Edit() {
             </Button>
             <Button
               variant="outlined"
-              style={{ color: "white" }}
+              sx={{ color: "white" }}
               onClick={() => {
                 navigate("/");
               }}

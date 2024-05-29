@@ -37,18 +37,30 @@ export default function Navbar() {
             <Button
               variant="outlined"
               onClick={handleOpen}
-              style={{ color: "white" }}
+              style={{ color: "white", height: "55px" }}
             >
               Edit{" "}
             </Button>
             <Dialog open={editDialogOpen} onClose={handleClose}>
-              <DialogTitle>Edit Movie</DialogTitle>
-              <DialogContent>
-                <DialogContentText>
+              <DialogTitle
+                sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
+              >
+                Edit Movie
+              </DialogTitle>
+              <DialogContent
+                sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
+              >
+                <DialogContentText
+                  sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
+                >
                   Enter movie name that you want to edit.
                 </DialogContentText>
                 <div id="input-container">
                   <TextField
+                    sx={{
+                      input: { color: "white" },
+                      label: { color: "white" },
+                    }}
                     autoFocus
                     margin="dense"
                     id="movie-name"
@@ -58,24 +70,36 @@ export default function Navbar() {
                   />
                 </div>
               </DialogContent>
-              <DialogActions>
-                <Button onClick={handleClose}>Cancel</Button>
+              <DialogActions
+                sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
+              >
+                <Button onClick={handleClose} style={{ color: "white" }}>
+                  Cancel
+                </Button>
                 <Button
                   onClick={() => {
                     //alert("Editing");
-                    const movie = document.getElementById("movie-name")!.value;
+                    const movie = (document.getElementById(
+                      "movie-name"
+                    ) as HTMLInputElement)!.value;
                     const movies = movieList.filter(
                       (movies) => movies.title === movie
                     );
                     if (movies && movies.length === 1) {
                       navigate("/edit/" + movies[0].id);
                     } else {
-                      const notFoundElement = "<div id='not-found-container' className = 'text-red-600 text-sm'>Movie not found try again </div>"
-                      if(document.getElementById("not-found-container") === null){
-                        document.getElementById("input-container")?.insertAdjacentHTML("beforeend", notFoundElement);
+                      const notFoundElement =
+                        "<div id='not-found-container' className = 'text-red-600 text-sm'>Movie not found try again </div>";
+                      if (
+                        document.getElementById("not-found-container") === null
+                      ) {
+                        document
+                          .getElementById("input-container")
+                          ?.insertAdjacentHTML("beforeend", notFoundElement);
                       }
                     }
                   }}
+                  style={{ color: "white" }}
                 >
                   Edit Movie
                 </Button>
