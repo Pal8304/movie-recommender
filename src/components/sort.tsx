@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { movieList } from "../assets/movie-data";
-
+import MovieDataContext from "./movie-data-context";
 import Button from "@mui/material/Button";
+import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
+import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export default function Sort() {
+  const movieList = useContext(MovieDataContext);
   const [popularity, setPopularity] = useState(true);
   const navigate = useNavigate();
   function sortByPopularity() {
@@ -25,6 +27,8 @@ export default function Sort() {
         onClick={sortByPopularity}
       >
         Sort
+        <div className="flex items-center justify-center transition ease-linear duration-300"
+        >{popularity ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}</div>
       </Button>
     </div>
   );

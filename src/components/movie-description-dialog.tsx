@@ -83,6 +83,7 @@ export default function MovieDescriptionDialog({
                   Rate
                 </Button> */}
               </div>
+              <div> Language : {selectedmovie.original_language}</div>
               <div>Similar Movies:</div>
             </DialogContentText>
           </div>

@@ -1,6 +1,5 @@
-import { useState } from "react";
-//import { useNavigate } from "react-router-dom";
-import { movieList } from "../assets/movie-data";
+import { useState, useContext } from "react";
+import MovieDataContext from "./movie-data-context";
 
 import { Card, CardContent, CardMedia } from "@mui/material";
 
@@ -9,8 +8,9 @@ import MovieDescriptionDialog from "./movie-description-dialog";
 import Movie from "../assets/movie-interface";
 
 export default function MovieList() {
+  const movieList = useContext(MovieDataContext);
   const [open, setOpen] = useState(false);
-  const [selectedmovie, setSelectedMovie] = useState(movieList[0]);
+  const [selectedmovie, setSelectedMovie] = useState<Movie>(movieList[0]);
   const handleClickOpen = (movie: Movie) => () => {
     setOpen(true);
     setSelectedMovie(movie);
@@ -21,8 +21,8 @@ export default function MovieList() {
   //const navigate = useNavigate();
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
-      {movieList.map(
-        (movie, index) =>
+      {movieList && movieList.map(
+        (movie: Movie, index) =>
           (index < 10 || 1) && (
             <>
               <div

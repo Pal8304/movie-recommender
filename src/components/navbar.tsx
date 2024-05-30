@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { movieList } from "../assets/movie-data";
+import MovieDataContext from "./movie-data-context";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Dialog from "@mui/material/Dialog";
@@ -7,12 +7,13 @@ import DialogActions from "@mui/material/DialogActions";
 import DialogContent from "@mui/material/DialogContent";
 import DialogContentText from "@mui/material/DialogContentText";
 import DialogTitle from "@mui/material/DialogTitle";
-import { useState } from "react";
+import { useContext, useState } from "react";
 
 import SearchBar from "./search";
 import Sort from "./sort";
 
 export default function Navbar() {
+  const movieList = useContext(MovieDataContext);
   const navigate = useNavigate();
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   function handleOpen() {
