@@ -2,9 +2,10 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App.tsx";
-import Edit from "./Edit.tsx";
+import Edit from "./Edit-movie.tsx";
 import NoTFound from "./NotFound.tsx";
 import "./index.css";
+import EditAll from "./MoviesTable.tsx";
 
 const router = createBrowserRouter([
   {
@@ -13,9 +14,18 @@ const router = createBrowserRouter([
     errorElement: <NoTFound />,
   },
   {
-    path: "edit/:id",
-    element: <Edit />,
+    path: "edit",
+    //element: <EditAll />,
     errorElement: <NoTFound />,
+    children: [
+      { path: "", element: <EditAll />, errorElement: <NoTFound /> },
+      { path: ":id", element: <Edit />, errorElement: <NoTFound /> },
+      {
+        path: "all",
+        element: <EditAll />,
+        errorElement: <NoTFound />,
+      },
+    ],
   },
   {
     path: "lol",

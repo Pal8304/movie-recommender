@@ -98,7 +98,16 @@ export default function MovieDescriptionDialog({
             }}
             sx={{ color: "white" }}
           >
-            Edit
+            Edit Movie Details
+          </Button>
+          <Button
+            autoFocus
+            onClick={() => {
+              navigate("/edit/");
+            }}
+            sx={{ color: "white" }}
+          >
+            All Movies List
           </Button>
           <Button
             autoFocus

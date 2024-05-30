@@ -73,9 +73,6 @@ export default function Navbar() {
               <DialogActions
                 sx={{ backgroundColor: "rgb(30 41 59)", color: "white" }}
               >
-                <Button onClick={handleClose} style={{ color: "white" }}>
-                  Cancel
-                </Button>
                 <Button
                   onClick={() => {
                     //alert("Editing");
@@ -102,6 +99,12 @@ export default function Navbar() {
                   style={{ color: "white" }}
                 >
                   Edit Movie
+                </Button>
+                <Button onClick={() => navigate("/edit")} style={{ color: "white" }}>
+                  All Movies List
+                </Button>
+                <Button onClick={handleClose} style={{ color: "white" }}>
+                  Cancel
                 </Button>
               </DialogActions>
             </Dialog>
