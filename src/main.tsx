@@ -6,6 +6,7 @@ import Edit from "./Edit-movie.tsx";
 import NoTFound from "./NotFound.tsx";
 import "./index.css";
 import EditAll from "./MoviesTable.tsx";
+import Testing from "./testing.tsx";
 
 const router = createBrowserRouter([
   {
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
   },
   {
     path: "lol",
-    element: <div>lolo</div>,
+    element: <Testing />,
     errorElement: <NoTFound />,
   },
 ]);
