@@ -13,7 +13,7 @@ import SearchBar from "./search";
 import Sort from "./sort";
 
 export default function Navbar() {
-  const movieList = useContext(MovieDataContext);
+  const {movieList} = useContext(MovieDataContext);
   const navigate = useNavigate();
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   function handleOpen() {

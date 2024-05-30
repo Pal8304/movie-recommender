@@ -87,7 +87,7 @@ const columns: GridColDef[] = [
 ];
 
 export default function MovieTable() {
-    const movieList = useContext(MovieDataContext);
+    const {movieList} = useContext(MovieDataContext);
   return (
     <div className="flex justify-center items-center">
       <Box

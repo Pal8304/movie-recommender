@@ -8,7 +8,7 @@ import { useState } from "react";
 function App() {
   const [movies, setMovies] = useState(movieList);
   return (
-    <MovieDataContext.Provider value={movies}>
+    <MovieDataContext.Provider value= {{movieList:movies,setMovieList:setMovies}}>
       <div className="flex flex-col text-white bg-slate-800 w-screen h-screen gap-2">
         <div className="sticky mt-6">
           <Navbar />

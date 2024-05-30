@@ -9,7 +9,7 @@ import TextField from "@mui/material/TextField";
 import Movie from "../assets/movie-interface";
 
 export default function SearchBar() {
-  const movieList = useContext(MovieDataContext);
+  const {movieList} = useContext(MovieDataContext);
   const [open, setOpen] = useState(false);
   const [selectedmovie, setSelectedMovie] = useState(movieList[0]);
   const handleClickOpen = (movie: Movie) => () => {

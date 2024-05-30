@@ -6,16 +6,18 @@ import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 import ArrowDownwardIcon from "@mui/icons-material/ArrowDownward";
 
 export default function Sort() {
-  const movieList = useContext(MovieDataContext);
-  const [popularity, setPopularity] = useState(true);
+  const { movieList, setMovieList } = useContext(MovieDataContext);
+  const [popularity, setPopularity] = useState(false);
   const navigate = useNavigate();
   function sortByPopularity() {
-    if (popularity) {
-      movieList.sort((a, b) => b.popularity - a.popularity);
-    } else {
-      movieList.sort((a, b) => a.popularity - b.popularity);
-    }
     setPopularity(!popularity);
+    const movieListCpy = [...movieList];
+    if (popularity) {
+      movieListCpy.sort((a, b) => b.popularity - a.popularity);
+    } else {
+      movieListCpy.sort((a, b) => a.popularity - b.popularity);
+    }
+    setMovieList(movieListCpy);
     console.log(movieList);
     navigate("/");
   }

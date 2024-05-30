@@ -8,7 +8,7 @@ import MovieDescriptionDialog from "./movie-description-dialog";
 import Movie from "../assets/movie-interface";
 
 export default function MovieList() {
-  const movieList = useContext(MovieDataContext);
+  const {movieList} = useContext(MovieDataContext);
   const [open, setOpen] = useState(false);
   const [selectedmovie, setSelectedMovie] = useState<Movie>(movieList[0]);
   const handleClickOpen = (movie: Movie) => () => {
