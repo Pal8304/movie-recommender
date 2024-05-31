@@ -7,6 +7,8 @@ import NoTFound from "./NotFound.tsx";
 import "./index.css";
 import EditAll from "./MoviesTable.tsx";
 import Testing from "./testing.tsx";
+import MovieDataContext from "./components/movie-data-context.tsx";
+import { movieList as orgList } from "./assets/movie-data.ts";
 
 const router = createBrowserRouter([
   {
@@ -35,8 +37,21 @@ const router = createBrowserRouter([
   },
 ]);
 
-ReactDOM.createRoot(document.getElementById("root")!).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
-);
+function Main() {
+  const [movies, setMovies] = React.useState(orgList);
+  const [searchMovie, setSearchMovie] = React.useState("");
+  return (
+    <MovieDataContext.Provider
+      value={{
+        movieList: movies,
+        setMovieList: setMovies,
+        searchMovie: searchMovie,
+        setSearchMovie: setSearchMovie,
+      }}
+    >
+      <RouterProvider router={router} />
+    </MovieDataContext.Provider>
+  );
+}
+
+ReactDOM.createRoot(document.getElementById("root")!).render(<Main />);

@@ -1,8 +1,8 @@
 import NoTFound from "./NotFound";
-import { movieList } from "./assets/movie-data";
 
 import { useParams, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import MovieDataContext from "./components/movie-data-context";
 import Button from "@mui/material/Button";
 
 export default function Edit() {
@@ -10,6 +10,7 @@ export default function Edit() {
   const [movieDescription, setMovieDescription] = useState("");
   const [movieRelease, setMovieRelease] = useState("");
   const [movieLanguage, setMovieLanguage] = useState("");
+  const {movieList} = useContext(MovieDataContext);
   const navigate = useNavigate();
   const movieId = useParams().id;
   const movie = movieList.filter((movies) => movies.id.toString() === movieId);

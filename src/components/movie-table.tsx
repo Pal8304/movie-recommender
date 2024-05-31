@@ -87,7 +87,7 @@ const columns: GridColDef[] = [
 ];
 
 export default function MovieTable() {
-  const { movieList } = useContext(MovieDataContext);
+  const { movieList, setMovieList } = useContext(MovieDataContext);
   return (
     <div className="flex justify-center items-center">
       <Box
@@ -99,6 +99,22 @@ export default function MovieTable() {
         }}
       >
         <DataGrid
+          processRowUpdate={(newRow, oldRow) => {
+            const movieListCpy = [...movieList];
+            for(let i = 0;i < movieListCpy.length;i++){
+              if(movieListCpy[i].id === oldRow.id){
+                movieListCpy[i].title = newRow.title;
+                movieListCpy[i].overview = newRow.overview;
+                movieList[i].original_language = newRow.original_language;
+                movieList[i].release_date = newRow.release_date;
+              }
+            }
+            setMovieList(movieListCpy);
+            return newRow;
+          }}
+          onProcessRowUpdateError={(error) => {
+            console.log("error", error);
+          }}
           sx={{ color: "white", backgroundColor: "rgb(30 41 59)" }}
           rows={movieList as Movie[]}
           columns={columns}

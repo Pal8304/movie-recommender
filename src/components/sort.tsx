@@ -32,6 +32,7 @@ export default function Sort() {
     if (options[selectedIndex] === "Sort by Release Date") sortByReleaseDate();
     if (options[selectedIndex] === "Sort by View Count") sortByViewCount();
     if (options[selectedIndex] === "Sort by Rating") sortByRating();
+    console.log(movieList);
   };
 
   const handleMenuItemClick = (
