@@ -101,8 +101,8 @@ export default function MovieTable() {
         <DataGrid
           processRowUpdate={(newRow, oldRow) => {
             const movieListCpy = [...movieList];
-            for(let i = 0;i < movieListCpy.length;i++){
-              if(movieListCpy[i].id === oldRow.id){
+            for (let i = 0; i < movieListCpy.length; i++) {
+              if (movieListCpy[i].id === oldRow.id) {
                 movieListCpy[i].title = newRow.title;
                 movieListCpy[i].overview = newRow.overview;
                 movieList[i].original_language = newRow.original_language;

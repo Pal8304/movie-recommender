@@ -13,7 +13,7 @@ import SearchBar from "./search";
 import Sort from "./sort";
 
 export default function Navbar() {
-  const {movieList} = useContext(MovieDataContext);
+  const { movieList } = useContext(MovieDataContext);
   const navigate = useNavigate();
   const [editDialogOpen, setEditDialogOpen] = useState(false);
   function handleOpen() {
@@ -101,7 +101,10 @@ export default function Navbar() {
                 >
                   Edit Movie
                 </Button>
-                <Button onClick={() => navigate("/edit")} style={{ color: "white" }}>
+                <Button
+                  onClick={() => navigate("/edit")}
+                  style={{ color: "white" }}
+                >
                   All Movies List
                 </Button>
                 <Button onClick={handleClose} style={{ color: "white" }}>

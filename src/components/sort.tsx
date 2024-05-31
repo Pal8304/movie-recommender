@@ -32,7 +32,7 @@ export default function Sort() {
     if (options[selectedIndex] === "Sort by Release Date") sortByReleaseDate();
     if (options[selectedIndex] === "Sort by View Count") sortByViewCount();
     if (options[selectedIndex] === "Sort by Rating") sortByRating();
-    console.log(movieList);
+    //console.log(movieList);
   };
 
   const handleMenuItemClick = (
@@ -42,6 +42,11 @@ export default function Sort() {
     event.preventDefault();
     setSelectedIndex(index);
     setOpen(false);
+    if (options[index] === "Sort by Name") sortByName();
+    if (options[index] === "Sort by Popularity") sortByPopularity();
+    if (options[index] === "Sort by Release Date") sortByReleaseDate();
+    if (options[index] === "Sort by View Count") sortByViewCount();
+    if (options[index] === "Sort by Rating") sortByRating();
   };
 
   const handleToggle = () => {
@@ -133,21 +138,33 @@ export default function Sort() {
         variant="outlined"
         ref={anchorRef}
         aria-label="Button group with a nested menu"
-        sx = {{color: "white", backgroundColor: "rgb(30 41 59}"}}
+        sx={{ color: "white", backgroundColor: "rgb(30 41 59}" }}
       >
-        <Button onClick={handleClick}
-        sx = {{color: "white", height: "55px"}}
-        >
+        <Button onClick={handleClick} sx={{ color: "white", height: "55px" }}>
           {options[selectedIndex]}
           {selectedIndex === 0 && name === false ? <ArrowDownwardIcon /> : null}
           {selectedIndex === 0 && name === true ? <ArrowUpwardIcon /> : null}
-          {selectedIndex === 1 && popularity === false ? <ArrowDownwardIcon /> : null}
-          {selectedIndex === 1 && popularity === true ? <ArrowUpwardIcon /> : null}
-          {selectedIndex === 2 && releaseDate === false ? <ArrowDownwardIcon /> : null}
-          {selectedIndex === 2 && releaseDate === true ? <ArrowUpwardIcon /> : null}
-          {selectedIndex === 3 && viewCount === false ? <ArrowDownwardIcon /> : null}
-          {selectedIndex === 3 && viewCount === true ? <ArrowUpwardIcon /> : null}
-          {selectedIndex === 4 && rating === false ? <ArrowDownwardIcon /> : null}
+          {selectedIndex === 1 && popularity === false ? (
+            <ArrowDownwardIcon />
+          ) : null}
+          {selectedIndex === 1 && popularity === true ? (
+            <ArrowUpwardIcon />
+          ) : null}
+          {selectedIndex === 2 && releaseDate === false ? (
+            <ArrowDownwardIcon />
+          ) : null}
+          {selectedIndex === 2 && releaseDate === true ? (
+            <ArrowUpwardIcon />
+          ) : null}
+          {selectedIndex === 3 && viewCount === false ? (
+            <ArrowDownwardIcon />
+          ) : null}
+          {selectedIndex === 3 && viewCount === true ? (
+            <ArrowUpwardIcon />
+          ) : null}
+          {selectedIndex === 4 && rating === false ? (
+            <ArrowDownwardIcon />
+          ) : null}
           {selectedIndex === 4 && rating === true ? <ArrowUpwardIcon /> : null}
         </Button>
         <Button
@@ -158,20 +175,20 @@ export default function Sort() {
           aria-haspopup="menu"
           onClick={handleToggle}
           variant="outlined"
-          sx={{ color: "white"}}
+          sx={{ color: "white" }}
         >
           <ArrowDropDownIcon />
         </Button>
       </ButtonGroup>
       <Popper
         sx={{
-          zIndex: 1,
+          zIndex: 9999,
         }}
         open={open}
         anchorEl={anchorRef.current}
         role={undefined}
         transition
-        disablePortal
+        disablePortal={false}
       >
         {({ TransitionProps, placement }) => (
           <Grow

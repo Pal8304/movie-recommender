@@ -10,7 +10,7 @@ export default function Edit() {
   const [movieDescription, setMovieDescription] = useState("");
   const [movieRelease, setMovieRelease] = useState("");
   const [movieLanguage, setMovieLanguage] = useState("");
-  const {movieList} = useContext(MovieDataContext);
+  const { movieList } = useContext(MovieDataContext);
   const navigate = useNavigate();
   const movieId = useParams().id;
   const movie = movieList.filter((movies) => movies.id.toString() === movieId);
