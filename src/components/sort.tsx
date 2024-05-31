@@ -29,8 +29,9 @@ export default function Sort() {
         onClick={sortByPopularity}
       >
         Sort
-        <div className="flex items-center justify-center transition ease-linear duration-300"
-        >{popularity ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}</div>
+        <div className="flex items-center justify-center transition ease-linear duration-300">
+          {popularity ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}
+        </div>
       </Button>
     </div>
   );

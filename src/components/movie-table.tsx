@@ -1,5 +1,5 @@
 import Box from "@mui/material/Box";
-import { DataGrid, GridColDef} from "@mui/x-data-grid";
+import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import type {} from "@mui/x-data-grid/themeAugmentation";
 
 import Movie from "../assets/movie-interface";
@@ -87,7 +87,7 @@ const columns: GridColDef[] = [
 ];
 
 export default function MovieTable() {
-    const {movieList} = useContext(MovieDataContext);
+  const { movieList } = useContext(MovieDataContext);
   return (
     <div className="flex justify-center items-center">
       <Box

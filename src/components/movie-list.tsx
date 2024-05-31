@@ -8,7 +8,7 @@ import MovieDescriptionDialog from "./movie-description-dialog";
 import Movie from "../assets/movie-interface";
 
 export default function MovieList() {
-  const {movieList} = useContext(MovieDataContext);
+  const {movieList,searchMovie} = useContext(MovieDataContext);
   const [open, setOpen] = useState(false);
   const [selectedmovie, setSelectedMovie] = useState<Movie>(movieList[0]);
   const handleClickOpen = (movie: Movie) => () => {
@@ -22,8 +22,8 @@ export default function MovieList() {
   return (
     <div className="flex flex-wrap items-center justify-center gap-4">
       {movieList && movieList.map(
-        (movie: Movie, index) =>
-          (index < 10 || 1) && (
+        (movie: Movie) =>
+          (searchMovie === "" || movie.title.toLowerCase().trim().includes(searchMovie.toLowerCase().trim())) && (
             <>
               <div
                 className="flex w-56 h-[32rem] m-2 rounded-lg transition ease-in-out duration-300 hover:-translate-y-1 hover:scale-110 hover:border-2 hover:cursor-pointer"
